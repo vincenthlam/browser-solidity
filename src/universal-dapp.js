@@ -31,7 +31,7 @@ var css = csjs`
     align-items: center;
   }
   .title {
-    ${styles.rightPanel.runTab.dropdown_RunTab}
+    ${styles.rightPanel.runTab.titlebox_RunTab}
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,8 +47,12 @@ var css = csjs`
     word-break: break-word;
     min-width: 230px;
   }
+
+  .title .copy {
+    color: ${styles.rightPanel.runTab.icon_AltColor_Instance_CopyToClipboard};
+  }
   .instance {
-    ${styles.rightPanel.runTab.box_Instance}
+    ${styles.rightPanel.runTab.box_Instance};
     margin-bottom: 2px;
     padding: 10px 15px 6px 15px;
   }
@@ -118,11 +122,11 @@ var css = csjs`
     border-color: lightgray;
   }
   .call {
-    background-color: ${styles.colors.lightRed};
-    border-color: ${styles.colors.lightRed};
+    background-color: ${styles.colors.blueFairyDust};
+    border-color: ${styles.colors.blueFairyDust};
   }
   .constant .call {
-    background-color: ${styles.colors.lightBlue};
+    background-color: ${styles.colors.blueMascara};
     border-color: ${styles.colors.lightBlue};
     width: 25%;
     outline: none;
@@ -139,7 +143,7 @@ var css = csjs`
     box-sizing: border-box;
     float: left;
     align-self: center;
-    color: ${styles.colors.grey};
+    color: ${styles.colors.black};
   }
   .hasArgs input {
     display: block;

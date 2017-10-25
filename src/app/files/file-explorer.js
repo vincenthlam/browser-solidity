@@ -25,6 +25,9 @@ var css = csjs`
     font-size         : 14px;
     cursor            : pointer;
   }
+  .file               {
+    color             : ${styles.leftPanel.text_Teriary};
+  }
   .hasFocus           {
     background-color  : ${styles.leftPanel.backgroundColor_FileExplorer};
   }
