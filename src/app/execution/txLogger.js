@@ -28,8 +28,8 @@ var css = csjs`
   .txTable, .tr, .td {
     border-collapse: collapse;
     font-size: 10px;
-    color: ${styles.terminal.text_Primary};
-    border: 1px solid ${styles.terminal.text_Primary};
+    color: ${styles.terminal.text_Secondary};
+    border: 1px solid ${styles.terminal.text_Secondary};
   }
   #txTable {
     margin-top: 1%;
@@ -38,6 +38,7 @@ var css = csjs`
   }
   .tr, .td {
     padding: 4px;
+    vertical-align: baseline;
   }
   .tableTitle {
     width: 25%;
@@ -60,7 +61,7 @@ var css = csjs`
     margin-left: 5px;
   }
   .clipboardCopy {
-    margin-right: 0.5em;
+    margin-left: 5px;
     cursor: pointer;
     color: ${styles.terminal.icon_Color_CopyToClipboard};
   }
@@ -334,7 +335,7 @@ function createTable (opts) {
   var contractAddress = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> contractAddress </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.contractAddress) }} title='Copy to clipboard'></i>${opts.contractAddress}</td>
+      <td class="${css.td}">${opts.contractAddress}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.contractAddress) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.contractAddress) table.appendChild(contractAddress)
@@ -342,7 +343,7 @@ function createTable (opts) {
   var from = yo`
     <tr class="${css.tr}">
       <td class="${css.td} ${css.tableTitle}"> from </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.from) }} title='Copy to clipboard'></i>${opts.from}</td>
+      <td class="${css.td}">${opts.from}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.from) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.from) table.appendChild(from)
@@ -357,7 +358,7 @@ function createTable (opts) {
   var to = yo`
     <tr class="${css.tr}">
     <td class="${css.td}"> to </td>
-    <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(data.to ? data.to : toHash) }} title='Copy to clipboard'></i>${toHash}</td>
+    <td class="${css.td}">${toHash}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(data.to ? data.to : toHash) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.to) table.appendChild(to)
@@ -365,7 +366,7 @@ function createTable (opts) {
   var gas = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> gas </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.gas) }} title='Copy to clipboard'></i>${opts.gas} gas</td>
+      <td class="${css.td}">${opts.gas} gas<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.gas) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.gas) table.appendChild(gas)
@@ -378,7 +379,7 @@ function createTable (opts) {
     table.appendChild(yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> transaction cost </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.transactionCost) }} title='Copy to clipboard'></i>${opts.transactionCost} gas ${callWarning}</td>
+      <td class="${css.td}">${opts.transactionCost} gas ${callWarning}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.transactionCost) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">`)
   }
 
@@ -386,14 +387,14 @@ function createTable (opts) {
     table.appendChild(yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> execution cost </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.executionCost) }} title='Copy to clipboard'></i>${opts.executionCost} gas ${callWarning}</td>
+      <td class="${css.td}">${opts.executionCost} gas ${callWarning}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.executionCost) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">`)
   }
 
   var hash = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> hash </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.hash) }} title='Copy to clipboard'></i>${opts.hash}</td>
+      <td class="${css.td}">${opts.hash}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.hash) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.hash) table.appendChild(hash)
@@ -401,7 +402,7 @@ function createTable (opts) {
   var input = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> input </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.input) }} title='Copy to clipboard'></i>${opts.input}</td>
+      <td class="${css.td}">${opts.input}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts.input) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.input) table.appendChild(input)
@@ -410,7 +411,7 @@ function createTable (opts) {
     var inputDecoded = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> decoded input </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts['decoded input']) }} title='Copy to clipboard'></i>${opts['decoded input']}</td>
+      <td class="${css.td}">${opts['decoded input']}<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(opts['decoded input']) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">`
     table.appendChild(inputDecoded)
   }
@@ -432,8 +433,9 @@ function createTable (opts) {
     <tr class="${css.tr}">
       <td class="${css.td}"> logs </td>
       <td class="${css.td}" id="logs">
+      ${JSON.stringify(stringified, null, '\t')}
       <i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(JSON.stringify(stringified, null, '\t')) }} title='Copy Logs to clipboard'></i>
-      <i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(JSON.stringify(opts.logs.raw || '0')) }} title='Copy Raw Logs to clipboard'></i>${JSON.stringify(stringified, null, '\t')}</td>
+      <i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(JSON.stringify(opts.logs.raw || '0')) }} title='Copy Raw Logs to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.logs) table.appendChild(logs)
@@ -442,7 +444,7 @@ function createTable (opts) {
   val = yo`
     <tr class="${css.tr}">
       <td class="${css.td}"> value </td>
-      <td class="${css.td}"><i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(`${val} wei`) }} title='Copy to clipboard'></i>${val} wei</td>
+      <td class="${css.td}">${val} wei<i class="fa fa-clipboard ${css.clipboardCopy}" aria-hidden="true" onclick=${function () { copy(`${val} wei`) }} title='Copy to clipboard'></i></td>
     </tr class="${css.tr}">
   `
   if (opts.val) table.appendChild(val)
